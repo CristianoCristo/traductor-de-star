@@ -1,0 +1,1068 @@
+
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Traductor de Star | Línguas de Angola</title>
+
+<style>
+:root {
+    --vermelho: #ce2029;
+    --preto: #171717;
+    --dourado: #f5bd45;
+    --creme: #fff8eb;
+    --verde: #16754b;
+    --branco: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: var(--creme);
+    color: #242424;
+    line-height: 1.6;
+}
+
+header {
+    background: var(--preto);
+    color: white;
+    padding: 15px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    border-bottom: 4px solid var(--dourado);
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: var(--dourado);
+}
+
+.logo small {
+    display: block;
+    color: #ddd;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: var(--dourado);
+}
+
+.hero {
+    padding: 85px 7%;
+    color: white;
+    background:
+        radial-gradient(circle at 85% 25%, #e9a52e55, transparent 25%),
+        linear-gradient(120deg, #151515 10%, #6c1119 65%, #bd2029);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::after {
+    content: "✦";
+    position: absolute;
+    right: 7%;
+    bottom: -95px;
+    font-size: 300px;
+    color: #ffffff0c;
+}
+
+.hero-content {
+    max-width: 760px;
+    position: relative;
+    z-index: 1;
+}
+
+.etiqueta {
+    display: inline-block;
+    color: var(--dourado);
+    border: 1px solid #f5bd4580;
+    padding: 6px 14px;
+    border-radius: 30px;
+    margin-bottom: 20px;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+.hero h1 {
+    font-size: clamp(36px, 6vw, 66px);
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.hero h1 span {
+    color: var(--dourado);
+}
+
+.hero p {
+    max-width: 620px;
+    color: #f2e9e9;
+    margin-bottom: 28px;
+}
+
+.botao {
+    display: inline-block;
+    background: var(--dourado);
+    color: #171717;
+    padding: 13px 22px;
+    border: none;
+    border-radius: 7px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.botao:hover {
+    background: white;
+}
+
+.botao-secundario {
+    background: transparent;
+    border: 1px solid white;
+    color: white;
+    margin-left: 8px;
+}
+
+.faixa {
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+    padding: 17px;
+    border-bottom: 1px solid #eadfce;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.faixa span::before {
+    content: "✦ ";
+    color: var(--vermelho);
+}
+
+section {
+    padding: 65px 7%;
+    scroll-margin-top: 20px;
+}
+
+.titulo {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.titulo small {
+    color: var(--vermelho);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+.titulo h2 {
+    font-size: clamp(27px, 4vw, 38px);
+    margin: 8px 0;
+}
+
+.titulo p {
+    color: #686868;
+    max-width: 650px;
+    margin: auto;
+}
+
+.tradutor {
+    background: white;
+    border-radius: 18px;
+    max-width: 1000px;
+    margin: auto;
+    padding: 30px;
+    box-shadow: 0 10px 35px #38210c12;
+    border: 1px solid #eee3d2;
+}
+
+.linguas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.campo label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+select, textarea, input {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #d8d0c5;
+    border-radius: 8px;
+    font: inherit;
+    background: #fffdf9;
+    outline-color: var(--dourado);
+}
+
+textarea {
+    min-height: 145px;
+    resize: vertical;
+}
+
+.campo-texto {
+    margin-top: 20px;
+}
+
+.acoes {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 18px;
+}
+
+.resultado {
+    background: #fff8eb;
+    border-left: 5px solid var(--verde);
+    padding: 20px;
+    margin-top: 25px;
+    border-radius: 7px;
+    min-height: 100px;
+}
+
+.resultado small {
+    color: #777;
+}
+
+.resultado h3 {
+    font-size: 26px;
+    margin: 8px 0;
+    overflow-wrap: anywhere;
+}
+
+.resultado p {
+    color: #555;
+}
+
+.aviso {
+    font-size: 12px;
+    color: #777;
+    margin-top: 14px;
+}
+
+.grelha {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.cartao {
+    background: white;
+    padding: 25px;
+    border-radius: 13px;
+    border: 1px solid #eadfce;
+    transition: transform .2s;
+}
+
+.cartao:hover {
+    transform: translateY(-4px);
+}
+
+.icone {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.cartao h3 {
+    margin-bottom: 8px;
+}
+
+.cartao p {
+    color: #666;
+    font-size: 14px;
+}
+
+.tag {
+    display: inline-block;
+    margin-top: 15px;
+    background: #f8ead1;
+    color: #7e4014;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+.cultura {
+    background: #191919;
+    color: white;
+}
+
+.cultura .titulo p {
+    color: #ccc;
+}
+
+.cultura .titulo small {
+    color: var(--dourado);
+}
+
+.cultura .cartao {
+    background: #262626;
+    border-color: #444;
+}
+
+.cultura .cartao p {
+    color: #ddd;
+}
+
+.cultura .cartao h3 {
+    color: var(--dourado);
+}
+
+.padrao {
+    height: 6px;
+    background: repeating-linear-gradient(
+        135deg,
+        var(--vermelho) 0 12px,
+        var(--preto) 12px 24px,
+        var(--dourado) 24px 36px
+    );
+}
+
+.dicionario {
+    max-width: 950px;
+    margin: auto;
+}
+
+.pesquisa {
+    margin-bottom: 20px;
+}
+
+.tabela-wrap {
+    overflow-x: auto;
+    background: white;
+    border-radius: 12px;
+    border: 1px solid #eadfce;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    min-width: 550px;
+}
+
+th, td {
+    padding: 15px;
+    border-bottom: 1px solid #eee5d9;
+}
+
+th {
+    background: #211c1c;
+    color: white;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+.favorito {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.sobre {
+    background: white;
+}
+
+.sobre-conteudo {
+    max-width: 850px;
+    margin: auto;
+    text-align: center;
+}
+
+.autor {
+    display: inline-block;
+    padding: 18px 30px;
+    margin-top: 25px;
+    background: var(--preto);
+    color: white;
+    border-radius: 12px;
+}
+
+.autor strong {
+    color: var(--dourado);
+}
+
+.ajuda {
+    max-width: 800px;
+    margin: auto;
+}
+
+details {
+    background: white;
+    border: 1px solid #eadfce;
+    padding: 18px;
+    border-radius: 9px;
+    margin-bottom: 12px;
+}
+
+summary {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+details p {
+    margin-top: 12px;
+    color: #666;
+}
+
+footer {
+    background: #111;
+    color: #ddd;
+    text-align: center;
+    padding: 30px 7%;
+    font-size: 13px;
+}
+
+footer strong {
+    color: var(--dourado);
+}
+
+footer a {
+    color: white;
+}
+
+@media(max-width: 750px) {
+    header {
+        justify-content: center;
+        text-align: center;
+    }
+
+    nav {
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .hero {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+
+    .linguas {
+        grid-template-columns: 1fr;
+    }
+
+    .grelha {
+        grid-template-columns: 1fr;
+    }
+
+    .tradutor {
+        padding: 18px;
+    }
+
+    .botao-secundario {
+        margin-left: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">
+        ✦ TRADUCTOR <span>DE STAR</span>
+        <small>A NOSSA LÍNGUA, A NOSSA IDENTIDADE</small>
+    </div>
+
+    <nav>
+        <a href="#inicio">Início</a>
+        <a href="#tradutor">Tradutor</a>
+        <a href="#dicionario">Dicionário</a>
+        <a href="#cultura">Cultura</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#ajuda">Ajuda</a>
+    </nav>
+</header>
+
+<main>
+
+<div class="padrao"></div>
+
+<section class="hero" id="inicio">
+    <div class="hero-content">
+        <span class="etiqueta">ANGOLA · CULTURA · LÍNGUAS</span>
+
+        <h1>
+            A nossa terra.<br>
+            <span>As nossas línguas.</span>
+        </h1>
+
+        <p>
+            Descobre palavras, expressões e formas de comunicar
+            nas línguas nacionais de Angola. Uma viagem pelas
+            nossas raízes, criada para aproximar gerações e
+            valorizar a nossa identidade cultural.
+        </p>
+
+        <a href="#tradutor" class="botao">Começar a traduzir ↗</a>
+        <a href="#cultura" class="botao botao-secundario">
+            Explorar Angola
+        </a>
+    </div>
+</section>
+
+<div class="faixa">
+    <span>Kimbundu</span>
+    <span>Umbundu</span>
+    <span>Cokwe / Tchokwe</span>
+    <span>Kikongo</span>
+    <span>Português</span>
+</div>
+
+<section id="tradutor">
+    <div class="titulo">
+        <small>O poder das palavras</small>
+        <h2>Traduz com o coração da nossa terra</h2>
+        <p>
+            Escreve uma palavra, escolhe os idiomas e consulta
+            as traduções disponíveis no dicionário do projecto.
+        </p>
+    </div>
+
+    <div class="tradutor">
+        <div class="linguas">
+            <div class="campo">
+                <label for="origem">Traduzir de</label>
+                <select id="origem">
+                    <option value="Português">Português</option>
+                    <option value="Kikongo">Kikongo</option>
+                    <option value="Kimbundu">Kimbundu</option>
+                    <option value="Umbundu">Umbundu</option>
+                    <option value="Cokwe">Cokwe / Tchokwe</option>
+                    <option value="Nyaneka">Nyaneka</option>
+                    <option value="Fiote">Fiote</option>
+                    <option value="Luvale">Luvale</option>
+                </select>
+            </div>
+
+            <div class="campo">
+                <label for="destino">Traduzir para</label>
+                <select id="destino">
+                    <option value="Kikongo">Kikongo</option>
+                    <option value="Kimbundu">Kimbundu</option>
+                    <option value="Umbundu">Umbundu</option>
+                    <option value="Cokwe">Cokwe / Tchokwe</option>
+                    <option value="Nyaneka">Nyaneka</option>
+                    <option value="Fiote">Fiote</option>
+                    <option value="Luvale">Luvale</option>
+                    <option value="Português">Português</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="campo campo-texto">
+            <label for="palavra">A palavra ou expressão</label>
+            <textarea id="palavra"
+                placeholder="Ex.: Olá, obrigado, família, amizade..."
+            ></textarea>
+        </div>
+
+        <div class="acoes">
+            <button class="botao" onclick="traduzir()">
+                Traduzir palavra
+            </button>
+
+            <button class="botao" onclick="trocarIdiomas()">
+                ⇄ Trocar idiomas
+            </button>
+
+            <button class="botao" onclick="limpar()"
+                style="background:#eee;">
+                Limpar
+            </button>
+        </div>
+
+        <div class="resultado" id="resultado" aria-live="polite">
+            <small>RESULTADO DA TRADUÇÃO</small>
+            <h3>As palavras aproximam povos.</h3>
+            <p>A tua próxima descoberta começa aqui.</p>
+        </div>
+
+        <p class="aviso">
+            Nota: o dicionário inicial é limitado. Os resultados
+            dependem das palavras registadas e não representam
+            uma tradução automática completa.
+        </p>
+    </div>
+</section>
+
+<section id="dicionario">
+    <div class="titulo">
+        <small>Aprender todos os dias</small>
+        <h2>Dicionário de Star</h2>
+        <p>
+            Pesquisa as palavras disponíveis e guarda as tuas
+            favoritas para consultares mais tarde.
+        </p>
+    </div>
+
+    <div class="dicionario">
+        <div class="pesquisa">
+            <input type="search" id="pesquisa"
+                placeholder="🔎 Procurar palavra ou idioma..."
+                oninput="mostrarDicionario()">
+        </div>
+
+        <div class="tabela-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Palavra</th>
+                        <th>Idioma</th>
+                        <th>Significado</th>
+                        <th>Guardar</th>
+                    </tr>
+                </thead>
+                <tbody id="lista-palavras"></tbody>
+            </table>
+        </div>
+
+        <p class="aviso">
+            As entradas podem ser ampliadas pelo responsável
+            pelo projecto após verificação linguística.
+        </p>
+    </div>
+</section>
+
+<section class="cultura" id="cultura">
+    <div class="titulo">
+        <small>Orgulho nas nossas raízes</small>
+        <h2>Angola vive em nós 🇦🇴</h2>
+        <p>
+            Mais do que palavras, somos história, tradição,
+            música, dança e diversidade.
+        </p>
+    </div>
+
+    <div class="grelha">
+        <article class="cartao">
+            <div class="icone">🦌</div>
+            <h3>Palanca Negra Gigante</h3>
+            <p>
+                Um dos símbolos mais conhecidos de Angola,
+                associado à riqueza da nossa fauna e ao orgulho
+                nacional.
+            </p>
+            <span class="tag">Símbolo nacional</span>
+        </article>
+
+        <article class="cartao">
+            <div class="icone">🥁</div>
+            <h3>Ritmos da nossa terra</h3>
+            <p>
+                Do semba ao kuduro, a música e a dança contam
+                histórias, unem comunidades e fazem vibrar
+                diferentes gerações.
+            </p>
+            <span class="tag">Música e dança</span>
+        </article>
+
+        <article class="cartao">
+            <div class="icone">🌍</div>
+            <h3>Línguas e identidade</h3>
+            <p>
+                Kimbundu, Umbundu, Kikongo, Cokwe e muitas
+                outras línguas fazem parte da diversidade
+                linguística do nosso país.
+            </p>
+            <span class="tag">Património cultural</span>
+        </article>
+
+        <article class="cartao">
+            <div class="icone">🍲</div>
+            <h3>Sabores de Angola</h3>
+            <p>
+                Funje, calulu, mufete e outros pratos tradicionais
+                fazem parte das memórias, encontros e costumes
+                de muitas famílias.
+            </p>
+            <span class="tag">Gastronomia</span>
+        </article>
+
+        <article class="cartao">
+            <div class="icone">🎨</div>
+            <h3>Arte e tradição</h3>
+            <p>
+                Tecidos, padrões, artesanato e expressões artísticas
+                revelam a criatividade e a história das
+                comunidades angolanas.
+            </p>
+            <span class="tag">Criatividade</span>
+        </article>
+
+        <article class="cartao">
+            <div class="icone">🤝</div>
+            <h3>Respeito e união</h3>
+            <p>
+                Conhecer a língua do outro é uma forma de
+                aproximação, respeito e valorização das
+                diferentes culturas.
+            </p>
+            <span class="tag">Unidade na diversidade</span>
+        </article>
+    </div>
+</section>
+
+<section class="sobre" id="sobre">
+    <div class="titulo">
+        <small>A nossa missão</small>
+        <h2>Sobre o Traductor de Star</h2>
+    </div>
+
+    <div class="sobre-conteudo">
+        <p>
+            O <strong>Traductor de Star</strong> é um projecto
+            digital idealizado para aproximar as pessoas das
+            línguas nacionais de Angola através da tecnologia.
+        </p>
+
+        <br>
+
+        <p>
+            A nossa missão é incentivar a aprendizagem,
+            preservar a diversidade linguística e criar um
+            espaço onde estudantes, famílias e curiosos possam
+            descobrir novas palavras e expressões.
+        </p>
+
+        <br>
+
+        <p>
+            Este projecto está em desenvolvimento. As traduções
+            serão enriquecidas progressivamente com a contribuição
+            de falantes, professores e especialistas.
+        </p>
+
+        <div class="autor">
+            Criado por<br>
+            <strong>CRISTIANO CRISTO</strong><br>
+            <small>Uma ideia com identidade angolana.</small>
+        </div>
+    </div>
+</section>
+
+<section id="ajuda">
+    <div class="titulo">
+        <small>Estamos aqui para ajudar</small>
+        <h2>Como utilizar o site?</h2>
+        <p>
+            Segue estas orientações para aproveitares
+            melhor o Traductor de Star.
+        </p>
+    </div>
+
+    <div class="ajuda">
+        <details>
+            <summary>Como faço uma tradução?</summary>
+            <p>
+                Entra na secção Tradutor, escolhe o idioma de
+                origem e o idioma de destino, escreve a palavra
+                e carrega em Traduzir palavra.
+            </p>
+        </details>
+
+        <details>
+            <summary>Por que motivo algumas palavras não aparecem?</summary>
+            <p>
+                O dicionário ainda está em fase inicial.
+                Quando uma palavra não estiver registada,
+                o site informará que não existe uma tradução
+                disponível naquele momento.
+            </p>
+        </details>
+
+        <details>
+            <summary>Como posso guardar palavras?</summary>
+            <p>
+                Na secção Dicionário, carrega na estrela junto
+                da palavra. As favoritas ficam guardadas
+                neste navegador, através do armazenamento local.
+            </p>
+        </details>
+
+        <details>
+            <summary>O site funciona sem Internet?</summary>
+            <p>
+                Sim. Depois de guardares este ficheiro no
+                computador, as funções e os dados integrados
+                podem funcionar sem Internet. Não existe,
+                nesta versão, um serviço online de tradução.
+            </p>
+        </details>
+
+        <details>
+            <summary>Como serão acrescentadas mais traduções?</summary>
+            <p>
+                O responsável pelo projecto pode ampliar o
+                dicionário no código. Recomenda-se verificar
+                cada palavra com falantes competentes da
+                respectiva língua antes de a publicar.
+            </p>
+        </details>
+    </div>
+</section>
+
+</main>
+
+<div class="padrao"></div>
+
+<footer>
+    <p>
+        ✦ <strong>TRADUCTOR DE STAR</strong> ✦
+    </p>
+    <p>As nossas línguas são a nossa herança.</p>
+    <p>Desenvolvido por Cristiano Cristo · 2026</p>
+    <p>Angola, nossa terra 🇦🇴</p>
+    <p style="margin-top:12px;">HTML · CSS · JavaScript</p>
+</footer>
+
+<script>
+// DICIONÁRIO INICIAL
+// Acrescenta novas entradas depois de verificar
+// a grafia e o significado com falantes competentes.
+
+const dicionario = [
+    {
+        palavra: "Mbote",
+        idioma: "Kikongo",
+        significado: "Olá / saudação"
+    }
+];
+
+// Lê as palavras favoritas guardadas neste navegador.
+let favoritas = [];
+
+try {
+    favoritas = JSON.parse(
+        localStorage.getItem("star_favoritas") || "[]"
+    );
+    if (!Array.isArray(favoritas)) favoritas = [];
+} catch (erro) {
+    favoritas = [];
+}
+
+function normalizar(texto) {
+    return texto.trim().toLocaleLowerCase("pt");
+}
+
+function traduzir() {
+    const texto = document.getElementById("palavra").value.trim();
+    const origem = document.getElementById("origem").value;
+    const destino = document.getElementById("destino").value;
+    const resultado = document.getElementById("resultado");
+
+    if (!texto) {
+        resultado.innerHTML = `
+            <small>ATENÇÃO</small>
+            <h3>Escreve uma palavra primeiro.</h3>
+            <p>Depois escolhe os idiomas e tenta novamente.</p>
+        `;
+        return;
+    }
+
+    if (origem === destino) {
+        resultado.innerHTML = `
+            <small>RESULTADO</small>
+            <h3>${escapar(texto)}</h3>
+            <p>Escolhe dois idiomas diferentes para traduzir.</p>
+        `;
+        return;
+    }
+
+    const entrada = dicionario.find(item =>
+        item.idioma === origem &&
+        normalizar(item.palavra) === normalizar(texto)
+    );
+
+    // Pesquisa de origem para destino.
+    let traducao = null;
+
+    if (entrada && destino === "Português") {
+        traducao = entrada.significado.split(" / ")[0];
+    } else if (entrada && entrada.idioma === destino) {
+        traducao = entrada.palavra;
+    }
+
+    // Pesquisa inversa: permite procurar pelo significado
+    // em português e obter a palavra registada.
+    if (!traducao && origem === "Português") {
+        const inversa = dicionario.find(item =>
+            item.idioma === destino &&
+            item.significado.toLocaleLowerCase("pt")
+                .split(" / ")
+                .includes(normalizar(texto))
+        );
+
+        if (inversa) traducao = inversa.palavra;
+    }
+
+    if (traducao) {
+        resultado.innerHTML = `
+            <small>TRADUÇÃO ENCONTRADA</small>
+            <h3>${escapar(traducao)}</h3>
+            <p>${escapar(origem)} → ${escapar(destino)}</p>
+        `;
+    } else {
+        resultado.innerHTML = `
+            <small>PALAVRA NÃO REGISTADA</small>
+            <h3>Estamos a construir este dicionário!</h3>
+            <p>
+                Ainda não temos uma tradução confirmada para
+                "${escapar(texto)}" de ${escapar(origem)}
+                para ${escapar(destino)}.
+                Tenta outra palavra disponível no dicionário.
+            </p>
+        `;
+    }
+}
+
+function escapar(texto) {
+    return String(texto).replace(/[&<>"']/g, caracter => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+    })[caracter]);
+}
+
+function trocarIdiomas() {
+    const origem = document.getElementById("origem");
+    const destino = document.getElementById("destino");
+
+    const temporario = origem.value;
+    origem.value = destino.value;
+    destino.value = temporario;
+
+    traduzir();
+}
+
+function limpar() {
+    document.getElementById("palavra").value = "";
+    document.getElementById("resultado").innerHTML = `
+        <small>RESULTADO DA TRADUÇÃO</small>
+        <h3>As palavras aproximam povos.</h3>
+        <p>A tua próxima descoberta começa aqui.</p>
+    `;
+    document.getElementById("palavra").focus();
+}
+
+function guardarFavorito(indice) {
+    const item = dicionario[indice];
+    if (!item) return;
+
+    const chave = item.idioma + "|" + item.palavra;
+    const posicao = favoritas.indexOf(chave);
+
+    if (posicao >= 0) {
+        favoritas.splice(posicao, 1);
+    } else {
+        favoritas.push(chave);
+    }
+
+    try {
+        localStorage.setItem(
+            "star_favoritas",
+            JSON.stringify(favoritas)
+        );
+    } catch (erro) {
+        // O dicionário continua utilizável se o
+        // navegador bloquear o armazenamento local.
+    }
+
+    mostrarDicionario();
+}
+
+function mostrarDicionario() {
+    const pesquisa = normalizar(
+        document.getElementById("pesquisa").value
+    );
+
+    const lista = document.getElementById("lista-palavras");
+
+    const encontrados = dicionario
+        .map((item, indice) => ({...item, indice}))
+        .filter(item =>
+            (
+                item.palavra + " " +
+                item.idioma + " " +
+                item.significado
+            ).toLocaleLowerCase("pt").includes(pesquisa)
+        );
+
+    if (encontrados.length === 0) {
+        lista.innerHTML = `
+            <tr>
+                <td colspan="4">
+                    Nenhuma palavra encontrada.
+                    O dicionário será ampliado.
+                </td>
+            </tr>
+        `;
+        return;
+    }
+
+    lista.innerHTML = encontrados.map(item => {
+        const chave = item.idioma + "|" + item.palavra;
+        const guardada = favoritas.includes(chave);
+
+        return `
+            <tr>
+                <td><strong>${escapar(item.palavra)}</strong></td>
+                <td>${escapar(item.idioma)}</td>
+                <td>${escapar(item.significado)}</td>
+                <td>
+                    <button class="favorito"
+                        aria-label="${guardada
+                            ? "Remover favorito"
+                            : "Guardar favorito"}"
+                        onclick="guardarFavorito(${item.indice})">
+                        ${guardada ? "⭐" : "☆"}
+                    </button>
+                </td>
+            </tr>
+        `;
+    }).join("");
+}
+
+// Apresenta o dicionário ao abrir a página.
+mostrarDicionario();
+</script>
+
+</body>
+</html>
